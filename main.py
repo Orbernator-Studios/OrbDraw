@@ -16,19 +16,20 @@ def colorSet(selection):
 
 
 def square(size, lor, fill):
-    moveSize = (int(size))
-    lorFinal = (int(lor))
-    if fill == (1):
+    if fill == ("Yes"):
         begin_fill()
     else:
         print("")
     for count in range(4):
         forward(size)
-        if lor == (1):
+        if lor == ("Left"):
             right(90)
-        else:
+        elif lor == ("Right"):
             left(90)
-    if fill == (1):
+        else:
+            print("Fatal Error. Square. Left Or Right")
+            fatalError()
+    if fill == ("Yes"):
         end_fill()
     else:
         print("")
@@ -37,17 +38,20 @@ def square(size, lor, fill):
 
 
 def triangle(size, lor, fill):
-    if fill == (1):
+    if fill == ("Yes"):
         begin_fill()
     else:
         print("")
     for count in range(3):
         forward(size)
-        if lor == (1):
+        if lor == ("Left"):
+            left(120)
+        elif lor == ("Right"):
             right(120)
         else:
-            left(120)
-    if fill == (1):
+            print("Fatal Error. Triangle. Left Or Right")
+            fatalError()
+    if fill == ("Yes"):
         end_fill()
     else:
         print("")
@@ -56,7 +60,7 @@ def triangle(size, lor, fill):
 
 def rectangle(sideone, sidetwo, lor, fill):
     loop = (0)
-    if fill == (1):
+    if fill == ("Yes"):
         begin_fill()
     else:
         print("")
@@ -69,17 +73,20 @@ def rectangle(sideone, sidetwo, lor, fill):
             elif loop == (2):
                 forward(sidetwo)
             else:
-                print("")
+                print("Fatal Error. Rectangle. Side loop")
                 fatalError()
-            if lor == (1):
+            if lor == ("Left"):
+                left(90)
+            elif lor == ("Right"):
                 right(90)
             else:
-                left(90)
+                print("Fatal Error. Rectangle. Left Or Right")
+                fatalError()
             if loop == (1):
                 loop = (2)
             else:
                 loop = (1)
-    if fill == (1):
+    if fill == ("Yes"):
         end_fill()
     else:
         print("")
@@ -87,21 +94,23 @@ def rectangle(sideone, sidetwo, lor, fill):
 
 
 def hexagon(size, lor, fill):
-    if fill == (1):
+    if fill == ("Yes"):
         begin_fill()
     else:
         print("")
     for count in range(6):
         forward(size)
-        if lor == (1):
+        if lor == ("Left"):
+            left(60)
+        elif lor == ("Right"):
             right(60)
         else:
-            left(60)
-    if fill == (1):
+            print("Fatal Error. Hexagon. Left Or Right")
+            fatalError()
+    if fill == ("Yes"):
         end_fill()
     else:
         print("")
-
 
 def executer(shape, shapesize, lor, fill, shapelength, shapewidth):
     print("\n")
@@ -121,13 +130,13 @@ def executer(shape, shapesize, lor, fill, shapelength, shapewidth):
 
 def finalChecksTwo(shape, shapesize, lor, fill, shapelength, shapewidth):
     if fill == ("Yes"):
-        executer(shape, shapesize, lor, "1", shapelength, shapewidth)
+        executer(shape, shapesize, lor, "Yes", shapelength, shapewidth)
     elif fill == ("yes"):
-        executer(shape, shapesize, lor, "1", shapelength, shapewidth)
+        executer(shape, shapesize, lor, "Yes", shapelength, shapewidth)
     elif fill == ("Y"):
-        executer(shape, shapesize, lor, "1", shapelength, shapewidth)
+        executer(shape, shapesize, lor, "Yes", shapelength, shapewidth)
     elif fill == ("y"):
-        executer(shape, shapesize, lor, "1", shapelength, shapewidth)
+        executer(shape, shapesize, lor, "Yes", shapelength, shapewidth)
     elif fill == ("No"):
         executer(shape, shapesize, lor, "No", shapelength, shapewidth)
     elif fill == ("no"):
@@ -143,21 +152,21 @@ def finalChecksTwo(shape, shapesize, lor, fill, shapelength, shapewidth):
 
 def finalChecksOne(shape, shapesize, lor, fill, shapelength, shapewidth):
     if lor == ("Left"):
-        finalChecksTwo(shape, shapesize, "1", fill, shapelength, shapewidth)
+        finalChecksTwo(shape, shapesize, "Left", fill, shapelength, shapewidth)
     elif lor == ("left"):
-        finalChecksTwo(shape, shapesize, "1", fill, shapelength, shapewidth)
+        finalChecksTwo(shape, shapesize, "Left", fill, shapelength, shapewidth)
     elif lor == ("L"):
-        finalChecksTwo(shape, shapesize, "1", fill, shapelength, shapewidth)
+        finalChecksTwo(shape, shapesize, "Left", fill, shapelength, shapewidth)
     elif lor == ("l"):
-        finalChecksTwo(shape, shapesize, "1", fill, shapelength, shapewidth)
+        finalChecksTwo(shape, shapesize, "Left", fill, shapelength, shapewidth)
     elif lor == ("Right"):
-        finalChecksTwo(shape, shapesize, "2", fill, shapelength, shapewidth)
+        finalChecksTwo(shape, shapesize, "Right", fill, shapelength, shapewidth)
     elif lor == ("right"):
-        finalChecksTwo(shape, shapesize, "2", fill, shapelength, shapewidth)
+        finalChecksTwo(shape, shapesize, "Right", fill, shapelength, shapewidth)
     elif lor == ("R"):
-        finalChecksTwo(shape, shapesize, "2", fill, shapelength, shapewidth)
+        finalChecksTwo(shape, shapesize, "Right", fill, shapelength, shapewidth)
     elif lor == ("r"):
-        finalChecksTwo(shape, shapesize, "2", fill, shapelength, shapewidth)
+        finalChecksTwo(shape, shapesize, "Right", fill, shapelength, shapewidth)
     else:
         print("Please change your Left Or Right Value as " + lor + " is not accepted.")
         finalMenu(shape, shapesize, shapelength, shapewidth)
@@ -167,7 +176,6 @@ def finalChecksOne(shape, shapesize, lor, fill, shapelength, shapewidth):
 
 
 def finalMenu(shape, shapesize, shapelength, shapewidth):
-    print("You have selected: " + shape)
     print("\n")
     lorinput = input("Would you like your shape drawn to the left or right?")
     print("\n")
@@ -181,13 +189,10 @@ def finalMenu(shape, shapesize, shapelength, shapewidth):
 def rectangleAdds(shape, shapesize):
     print("You have selected: " + shape)
     print("\n")
-    shapelength = input("Please enter the length of the rectangle: ")
+    shapelength = int(input("Please enter the length of the rectangle: "))
     print("\n")
-    print("You have selected: " + shapelength)
+    shapewidth = int(input("Please enter the width of the rectangle: "))
     print("\n")
-    shapewidth = input("Please enter the width of the rectangle: ")
-    print("\n")
-    print("You have selected: " + shapewidth)
     finalMenu(shape, shapesize, shapelength, shapewidth)
 
 def shapecheck(shapetocheck, shapesizeinputcont):
@@ -196,9 +201,9 @@ def shapecheck(shapetocheck, shapesizeinputcont):
     elif shapetocheck == ("square"):
         finalMenu("Square", shapesizeinputcont, 0, 0)
     elif shapetocheck == ("Rectangle"):
-        finalMenu("Rectangle", shapesizeinputcont, 0, 0)
+        rectangleAdds("Rectangle", shapesizeinputcont)
     elif shapetocheck == ("rectangle"):
-        finalMenu("Rectangle", shapesizeinputcont, 0, 0)
+        rectangleAdds("Rectangle", shapesizeinputcont)
     elif shapetocheck == ("Hexagon"):
         finalMenu("Hexagon", shapesizeinputcont, 0,0)
     elif shapetocheck == ("hexagon"):
@@ -238,5 +243,14 @@ def MainMenu():
     randomthingywithnovalue = input("Press Enter To Continue")
     mainCode()
 
+def RestartMenu():
+    restartInput = input("Would you like to draw another shape? (Y/N)")
+    print("\n")
+    if restartInput == "Y" or restartInput == "y":
+        mainCode()
+    else:
+        print("Ending Program.")
+        exit()
 
 MainMenu()
+RestartMenu()
